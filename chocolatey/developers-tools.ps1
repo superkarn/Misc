@@ -6,25 +6,45 @@
 # http://www.baremetalsoft.com/baretail/
 choco install baretail
 
-# Notepad++
-# Text editor
-# https://notepad-plus-plus.org/
-choco install notepadplusplus 
+# curl
+# command line tool and library for transferring data with URLs
+# https://curl.haxx.se/
+choco install curl 
 
-# grepwin
-# RegEx search and replace for Windows
-# http://stefanstools.sourceforge.net/grepWin.html
-choco install grepwin 
+# Fillder
+# Web debugging proxy 
+# http://www.telerik.com/fiddler
+choco install fiddler4
 
 # Git
 # Code Repository
 # https://git-scm.com/
 choco install git 
 
-# TortoiseGit
-# UI for Git
-# https://tortoisegit.org/
-choco install tortoisegit 
+# grepwin
+# RegEx search and replace for Windows
+# http://stefanstools.sourceforge.net/grepWin.html
+choco install grepwin 
+
+# Node.js
+# JavaScript runtime
+# https://nodejs.org/en/
+choco install nodejs 
+
+# Notepad++
+# Text editor
+# https://notepad-plus-plus.org/
+choco install notepadplusplus 
+
+# Postman
+# API Development Tool
+# https://www.getpostman.com/
+choco install postman 
+
+# PuTTY
+# SSH and Telnet client 
+# http://www.chiark.greenend.org.uk/~sgtatham/putty/
+choco install putty 
 
 # Redis
 # in-memory data structure store
@@ -36,8 +56,18 @@ choco install redis-64
 # https://redisdesktop.com/
 choco install redis-desktop-manager 
 
-# MariaDB
-# Relational Database, drop-in replacement of MySQL
-# https://mariadb.org/
-choco install mariadb 
+# Windows Sysinternals
+# Windows troubleshooting utilities
+# http://technet.microsoft.com/en-us/sysinternals/bb842062
+choco install sysinternals 
+
+# TortoiseGit
+# UI for Git
+# https://tortoisegit.org/
+choco install tortoisegit 
+
+# WinDirStat 
+# Disk usage statistics viewer and cleanup tool 
+# https://windirstat.net/
+choco install windirstat 
 
