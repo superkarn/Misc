@@ -36,6 +36,11 @@ choco install nodejs
 # https://notepad-plus-plus.org/
 choco install notepadplusplus 
 
+# posh-git
+# A set of PowerShell scripts which provide Git/PowerShell integration
+# https://github.com/dahlbyk/posh-git
+choco install poshgit 
+
 # Postman
 # API Development Tool
 # https://www.getpostman.com/
