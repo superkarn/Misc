@@ -4,6 +4,9 @@
 # How to start a new container
 #  - save database data to host folder
 #  - use conf file from host
+#
+# Note: folder path needs some translation:
+# D:\my\path -> //d/my/path
 
 docker run `
 --name [my-container-name] `
