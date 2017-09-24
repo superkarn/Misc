@@ -2,6 +2,7 @@
 # https://hub.docker.com/_/redis/
 #
 # - Start a new container
+# - Expose default port
 # - Save data to host folder
 # - Use conf file from host
 #
