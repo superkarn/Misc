@@ -1,9 +1,9 @@
 # MariaDB Docker image
 # https://hub.docker.com/_/mariadb/
 #
-# How to start a new container
-#  - save database data to host folder
-#  - use conf file from host
+# - Start a new container
+# - Save data to host folder
+# - Use conf file from host
 #
 # Note: folder path needs some translation:
 # D:\my\path -> //d/my/path
