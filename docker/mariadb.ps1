@@ -10,6 +10,7 @@
 
 docker run `
 --name [my-container-name] `
+-p 3306:3306
 -v [absolute-path-on-host]/data:/var/lib/mysql `
 -v [absolute-path-on-host]/conf:/etc/mysql/conf.d `
 -e MYSQL_ROOT_PASSWORD=[my-root-password] `
