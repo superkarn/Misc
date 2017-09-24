@@ -11,6 +11,6 @@
 docker run `
 --name redis-01 `
 -p 6379:6379 `
--v //d/Docker/volumes/[my-container-name]:/data `
--v //d/Docker/volumes/[my-container-name]/conf:/usr/local/etc/redis `
+-v [absolute-path-on-host]/data:/data `
+-v [absolute-path-on-host]/conf:/usr/local/etc/redis `
 -d redis
