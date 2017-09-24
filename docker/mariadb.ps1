@@ -2,8 +2,10 @@
 # https://hub.docker.com/_/mariadb/
 #
 # - Start a new container
+# - Expose default port
 # - Save data to host folder
 # - Use conf file from host
+# - Set root password
 #
 # Note: folder path needs some translation:
 # D:\my\path -> //d/my/path
