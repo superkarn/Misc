@@ -1,5 +1,11 @@
+# Get today's date
+$today = get-date
+$today_string = $today.ToString("yyyy-MM-dd")
+
 # Backs up the picture folder to drive G
-robocopy "D:\Pictures\" "G:\Data\Backup\Pictures\" /mir /log:Picture-backup-G.txt
+$log_g = $today_string + "-Picture-backup-G.txt"
+robocopy "D:\Pictures\" "G:\Data\Backup\Pictures\" /mir /log:$log_g
 
 # Backs up the picture folder to drive F
-robocopy "D:\Pictures\" "F:\Data\Backup\Pictures\" /mir /log:Picture-backup-F.txt
+$log_f = $today_string + "-Picture-backup-F.txt"
+robocopy "D:\SharedPictures\" "F:\Data\Backup\Pictures\" /mir /log:log_f
