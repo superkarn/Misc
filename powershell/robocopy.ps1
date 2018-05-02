@@ -4,7 +4,7 @@ $today_string = $today.ToString("yyyy-MM-dd")
 
 # Backs up the picture folder to drive G
 $log_g = $today_string + "-Picture-backup-G.txt"
-robocopy "D:\Pictures\" "G:\Data\Backup\Pictures\" /mir /log:$log_g
+robocopy "D:\SharedPictures\" "G:\Data\Backup\Pictures\" /mir /log:$log_g
 
 # Backs up the picture folder to drive F
 $log_f = $today_string + "-Picture-backup-F.txt"
