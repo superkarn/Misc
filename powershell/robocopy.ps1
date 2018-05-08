@@ -12,4 +12,4 @@ robocopy "D:\SharedPictures\" "F:\Data\Backup\Pictures\" /mir /log:log_f
 
 # Back up the picture folder to AmazonPhotos folder, copying only jpgs
 $log_f = $today_string + "-AmazonPhotos-backup.txt"
-Robocopy "D:\SharedPictures\" "G:\Data\AmazonPhotos\" *.jpg /mir /log:log_f
+Robocopy "D:\SharedPictures\" "G:\Data\AmazonCloudDrive\Pictures\" *.jpg /mir /log:log_f
