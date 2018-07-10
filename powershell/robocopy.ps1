@@ -8,8 +8,8 @@ robocopy "D:\SharedPictures\" "G:\Data\Backup\Pictures\" /mir /log:$log_g
 
 # Back up the picture folder to drive F
 $log_f = $today_string + "-Picture-backup-F.txt"
-robocopy "D:\SharedPictures\" "F:\Data\Backup\Pictures\" /mir /log:log_f
+robocopy "D:\SharedPictures\" "F:\Data\Backup\Pictures\" /mir /log:$log_f
 
 # Back up the picture folder to AmazonPhotos folder, copying only jpgs
-$log_f = $today_string + "-AmazonPhotos-backup.txt"
-Robocopy "D:\SharedPictures\" "G:\Data\AmazonCloudDrive\Pictures\" *.jpg /mir /log:log_f
+$log_amzn = $today_string + "-AmazonPhotos-backup.txt"
+Robocopy "D:\SharedPictures\" "G:\Data\AmazonCloudDrive\Pictures\" *.jpg /mir /log:$log_amzn
