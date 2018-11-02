@@ -1,5 +1,12 @@
 How to set up and run ASP.NET applications using Docker and Windows containers.
 
+## 0 Install portainer
+- Follow the instructions [here](https://portainer.io/install.html)
+```
+> docker volume create portainer_data
+> docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
+```
+
 ## 1 Installation and Set Up
 - Download and install [Docker For Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows)
 - Right click Docker icon in the System Tray and select "Kitematic" and follow the instruction to install it
