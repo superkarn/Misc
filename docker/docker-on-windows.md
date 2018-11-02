@@ -1,4 +1,4 @@
-How to set up and run ASP.NET applications using Docker and Windows containers.
+# Setting up and running ASP.NET applications using Docker and Windows containers
 
 ## 0 Install portainer
 - Follow the instructions [here](https://portainer.io/install.html)
