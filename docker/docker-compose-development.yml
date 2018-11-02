@@ -1,0 +1,66 @@
+##############################
+# Karn Ratana
+# Last modified 2018-11-01
+#
+# Unless specified, host port is the same as container port.
+#
+# Web Servers
+#   Default             172.0.0.1
+#
+# Portainer
+#   Portainer           172.0.0.100:9000
+# Redis                
+#   Cache               172.0.0.111:6379
+# dynamodb-admin
+#   dynamodb-admin      172.0.0.121:8001
+# localstack           
+#   DynamoDB            172.0.0.131:4569
+#   Lambda              172.0.0.131:4574
+#   S3                  172.0.0.131:4572
+#   SNS                 172.0.0.131:4575
+#   SQS                 172.0.0.131:4576
+
+
+version: '3'
+services:    
+
+    redis-cache:
+        image: "redis:latest"
+        container_name: "redis-cache"
+        ports:
+            - 6379:6379
+        networks:
+            default:
+                ipv4_address: 172.0.0.111
+    
+    localstack:
+        image: "localstack/localstack:latest"
+        container_name: "localstack-app"
+        ports:
+            - 4564:4564 # DynamoDB shell
+            - 4569:4569 # DynamoDB 
+            - 4572:4572 # S3
+            - 4574:4574 # Lambda
+            - 4575:4575 # SNS
+            - 4576:4576 # SQS
+        networks:
+            default:
+                ipv4_address: 172.0.0.131
+                
+    dynamodb-admin:
+        image: "aaronshaf/dynamodb-admin:latest"
+        container_name: "dynamodb-admin-app"
+        ports:
+            - 8001:8001
+        networks:
+            default:
+                ipv4_address: 172.0.0.121
+        environment:
+            - DYNAMO_ENDPOINT=http://localstack:4569
+    
+networks:
+    default:
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 172.0.0.0/16
