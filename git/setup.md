@@ -29,7 +29,7 @@ See [here](https://stackoverflow.com/a/43313491/1398750)
     1. Variable name: `GIT_SSH`
     1. Variable value: `{path-to-plink}` (should be `C:\Program Files\TortoiseGit\bin\TortoisePlink.exe`)
 
-# Add key to pageant
+# 4 Add key to pageant
 You need to readd keys to pageant on every system restart.
 
 1. Open pageant by double clicking the icon from System Tray
