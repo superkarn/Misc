@@ -10,6 +10,7 @@
 # Portainer
 #   Portainer           172.0.0.100:9000
 # Redis                
+#   Cache               172.0.0.110:8081
 #   Cache               172.0.0.111:6379
 # dynamodb-admin
 #   dynamodb-admin      172.0.0.121:8001
@@ -23,6 +24,18 @@
 
 version: '3'
 services:    
+    redis-commander:
+        image: "rediscommander/redis-commander:latest"
+        container_name: "redis-commander"
+        hostname: redis-commander
+        restart: always
+        environment:
+            - REDIS_HOSTS=local:redis-cache:6379
+        ports:
+            - 8081:8081
+        networks:
+            default:
+                ipv4_address: 172.0.0.110
 
     redis-cache:
         image: "redis:latest"
