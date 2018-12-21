@@ -7,6 +7,8 @@
 # Web Servers
 #   Default             172.0.0.1
 #
+# SQL Server
+#   SQL Server          172.0.0.90:1433
 # Portainer
 #   Portainer           172.0.0.100:9000
 # Redis                
@@ -23,7 +25,23 @@
 
 
 version: '3'
-services:    
+services: 
+
+    sql-server:
+        image: "mcr.microsoft.com/mssql/server"
+        container_name: "sql-server"
+        environment:
+            - ACCEPT_EULA=Y 
+            - SA_PASSWORD=Password1234
+            - MSSQL_PID=Developer
+        volumes:
+            - sql-volume:/var/opt/mssql
+        ports:
+            - 1433:1433
+        networks:
+            default:
+                ipv4_address: 172.0.0.90
+                
     redis-commander:
         image: "rediscommander/redis-commander:latest"
         container_name: "redis-commander"
@@ -70,6 +88,9 @@ services:
                 ipv4_address: 172.0.0.121
         environment:
             - DYNAMO_ENDPOINT=http://localstack:4569
+
+volumes:
+    sql-volume:
     
 networks:
     default:
