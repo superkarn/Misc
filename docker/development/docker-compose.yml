@@ -1,35 +1,38 @@
 ##############################
 # Karn Ratana
-# Last modified 2018-11-01
+# Last modified 2018-12-24
 #
-# Unless specified, host port is the same as container port.
+# This docker-compose is for local development,
+# not for deploying an application.
 #
-# Web Servers
-#   Default             172.0.0.1
 #
-# SQL Server
-#   SQL Server          172.0.0.90:1433
-# Portainer
-#   Portainer           172.0.0.100:9000
-# Redis                
-#   Cache               172.0.0.110:8081
-#   Cache               172.0.0.111:6379
-# dynamodb-admin
-#   dynamodb-admin      172.0.0.121:8001
+# Data Stores
+#   SQL Server          172.0.0.51:1433
+#   Redis               172.0.0.61:6379
+#            
 # localstack           
 #   DynamoDB            172.0.0.131:4569
 #   Lambda              172.0.0.131:4574
 #   S3                  172.0.0.131:4572
 #   SNS                 172.0.0.131:4575
 #   SQS                 172.0.0.131:4576
+#
+# Third parties
+#   Redis Commander     172.0.0.201:8201
+#   DynamoDB Admin      172.0.0.202:8202
+#
 
 
 version: '3'
 services: 
-
+    
+    
+    ##############################
+    # Data Stores
     sql-server:
-        image: "mcr.microsoft.com/mssql/server"
-        container_name: "sql-server"
+        image: mcr.microsoft.com/mssql/server
+        container_name: development-sql-server
+        hostname: sql-server
         environment:
             - ACCEPT_EULA=Y 
             - SA_PASSWORD=Password1234
@@ -40,57 +43,78 @@ services:
             - 1433:1433
         networks:
             default:
-                ipv4_address: 172.0.0.90
-                
-    redis-commander:
-        image: "rediscommander/redis-commander:latest"
-        container_name: "redis-commander"
-        hostname: redis-commander
-        restart: always
-        environment:
-            - REDIS_HOSTS=local:redis-cache:6379
-        ports:
-            - 8081:8081
-        networks:
-            default:
-                ipv4_address: 172.0.0.110
-
-    redis-cache:
-        image: "redis:latest"
-        container_name: "redis-cache"
+                ipv4_address: 172.0.0.51
+    
+    redis:
+        image: redis:latest
+        container_name: development-redis
+        hostname: redis
+        environment: []
+        volumes:
+            - redis-volume:/data
         ports:
             - 6379:6379
         networks:
             default:
-                ipv4_address: 172.0.0.111
+                ipv4_address: 172.0.0.61
     
-    localstack:
-        image: "localstack/localstack:latest"
-        container_name: "localstack-app"
-        ports:
-            - 4564:4564 # DynamoDB shell
-            - 4569:4569 # DynamoDB 
-            - 4572:4572 # S3
-            - 4574:4574 # Lambda
-            - 4575:4575 # SNS
-            - 4576:4576 # SQS
-        networks:
-            default:
-                ipv4_address: 172.0.0.131
-                
-    dynamodb-admin:
-        image: "aaronshaf/dynamodb-admin:latest"
-        container_name: "dynamodb-admin-app"
-        ports:
-            - 8001:8001
-        networks:
-            default:
-                ipv4_address: 172.0.0.121
+    
+    ##############################
+    # Services
+    #localstack:
+    #    image: localstack/localstack:latest
+    #    container_name: development-localstack-app
+    #    hostname: localstack
+    #    environment: 
+    #        - DATA_DIR=/tmp/localstack/data
+    #    volumes: 
+    #        - localstack-volume:/tmp/localstack
+    #    ports:
+    #        - 4564:4564 # DynamoDB shell
+    #        - 4569:4569 # DynamoDB 
+    #        - 4572:4572 # S3
+    #        - 4574:4574 # Lambda
+    #        - 4575:4575 # SNS
+    #        - 4576:4576 # SQS
+    #    networks:
+    #        default:
+    #            ipv4_address: 172.0.0.131
+              
+              
+    ##############################
+    # Third Parties
+    redis-commander:
+        image: rediscommander/redis-commander:latest
+        container_name: development-redis-commander
+        hostname: redis-commander
         environment:
-            - DYNAMO_ENDPOINT=http://localstack:4569
+            - REDIS_HOSTS=local:redis:6379
+        volumes: []
+        ports:
+            - 8201:8081
+        networks:
+            default:
+                ipv4_address: 172.0.0.201
+                
+    #dynamodb-admin:
+    #    image: aaronshaf/dynamodb-admin:latest
+    #    container_name: development-dynamodb-admin-app
+    #    hostname: dynamodb-admin
+    #    environment:
+    #        - DYNAMO_ENDPOINT=http://localstack:4569
+    #    volumes: []
+    #    ports:
+    #        - 8202:8001
+    #    networks:
+    #        default:
+    #            ipv4_address: 172.0.0.202
 
+    
 volumes:
+    #localstack-volume:
+    redis-volume:
     sql-volume:
+    
     
 networks:
     default:
