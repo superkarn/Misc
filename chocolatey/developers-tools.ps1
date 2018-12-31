@@ -2,16 +2,16 @@
 
 
 # BareTail
-# real-time log file monitoring tool
+# Real-time log file monitoring tool
 # http://www.baremetalsoft.com/baretail/
 choco install baretail
 
 # curl
-# command line tool and library for transferring data with URLs
+# Command line tool and library for transferring data with URLs
 # https://curl.haxx.se/
 choco install curl 
 
-# Fillder
+# Fiddler
 # Web debugging proxy 
 # http://www.telerik.com/fiddler
 choco install fiddler4
@@ -51,16 +51,6 @@ choco install postman
 # http://www.chiark.greenend.org.uk/~sgtatham/putty/
 choco install putty 
 
-# Redis
-# in-memory data structure store
-# https://redis.io/
-choco install redis-64
-
-# Redis Desktop Manager
-# Cross-platform open source Redis DB management tool
-# https://redisdesktop.com/
-choco install redis-desktop-manager 
-
 # Windows Sysinternals
 # Windows troubleshooting utilities
 # http://technet.microsoft.com/en-us/sysinternals/bb842062
@@ -76,3 +66,19 @@ choco install tortoisegit
 # https://windirstat.net/
 choco install windirstat 
 
+
+
+########## 
+# OLD
+
+# Redis
+### Use Redis on Docker instead
+# In-memory data structure store
+# https://redis.io/
+#choco install redis-64
+
+# Redis Desktop Manager
+### Use Redis Commander on Docker instead
+# Cross-platform open source Redis DB management tool
+# https://redisdesktop.com/
+#choco install redis-desktop-manager 
