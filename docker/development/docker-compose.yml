@@ -7,8 +7,9 @@
 #
 #
 # Data Stores
-#   SQL Server          172.0.0.51:1433
-#   Redis               172.0.0.61:6379
+#   Mongo               172.0.0.53:6379
+#   Redis               172.0.0.51:6379
+#   SQL Server          172.0.0.52:1433
 #            
 # localstack           
 #   DynamoDB            172.0.0.131:4569
@@ -28,7 +29,34 @@ services:
     
     
     ##############################
-    # Data Stores
+    # Data Stores        
+    mongo:
+        image: mongo:latest
+        container_name: development-mongo
+        hostname: mongo
+        environment: []
+        volumes:
+            - mongo-volume:/data/db
+            - mongo-config:/data/configdb
+        ports:
+            - 27017:27017
+        networks:
+            default:
+                ipv4_address: 172.0.0.53
+
+    redis:
+        image: redis:latest
+        container_name: development-redis
+        hostname: redis
+        environment: []
+        volumes:
+            - redis-volume:/data
+        ports:
+            - 6379:6379
+        networks:
+            default:
+                ipv4_address: 172.0.0.61
+
     sql-server:
         image: mcr.microsoft.com/mssql/server
         container_name: development-sql-server
@@ -43,20 +71,7 @@ services:
             - 1433:1433
         networks:
             default:
-                ipv4_address: 172.0.0.51
-    
-    redis:
-        image: redis:latest
-        container_name: development-redis
-        hostname: redis
-        environment: []
-        volumes:
-            - redis-volume:/data
-        ports:
-            - 6379:6379
-        networks:
-            default:
-                ipv4_address: 172.0.0.61
+                ipv4_address: 172.0.0.52
     
     
     ##############################
@@ -112,6 +127,8 @@ services:
     
 volumes:
     #localstack-volume:
+    mongo-config:
+    mongo-volume:
     redis-volume:
     sql-volume:
     
