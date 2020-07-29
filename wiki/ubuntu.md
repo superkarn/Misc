@@ -30,3 +30,8 @@ sudo vim /etc/samba/smb.conf
    writable = yes
 
 ```
+
+5. Restart Samba
+```
+sudo service smbd restart
+```
