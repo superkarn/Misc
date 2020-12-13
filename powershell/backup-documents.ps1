@@ -1,5 +1,5 @@
 # Create the log folder if not exist
-$log_path = "~\logs\backup\"
+$log_path = "R:\temp\logs\backup\"
 
 if (!(test-path $log_path))
 {
@@ -11,7 +11,7 @@ $today = get-date
 $today_string = $today.ToString("yyyy-MM-dd")
 
 # Back up the document folder to OneDrive
-$log = $today_string + "-Document-backup-OneDrive.txt"
-cd $log_path
+$log = "$log_path$today_string-Document-backup-OneDrive.txt"
 robocopy "D:\Storage\Dropbox\Documents\" "D:\Storage\OneDrive\Documents\" /mir /log:$log
 
+Write-Output "Backup completed.  See the log here: $log"
