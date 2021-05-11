@@ -33,6 +33,7 @@
         [
             {
                 // Make changes here to the powershell.exe profile.
+                "colorScheme": "Campbell Powershell",
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "name": "Windows PowerShell",
                 "commandline": "powershell.exe",
@@ -46,8 +47,27 @@
                 "hidden": false
             },
             {
+                "acrylicOpacity": 0.75,
+                "closeOnExit": "graceful",
+                "colorScheme": "Campbell",
+                "commandline": "C:/Program Files/Git/bin/bash.exe --login",
+                "cursorColor": "#FFFFFF",
+                "cursorShape": "bar",
+                "fontFace": "Consolas",
+                "fontSize": 14,
+                "guid": "{14ad203f-52cc-4110-90d6-d96e0f41b64d}",
+                "historySize": 9001,
+                "icon": "%PROGRAMFILES%\\git\\mingw64\\share\\git\\git-for-windows.ico",
+                "name": "Git Bash",
+                "padding": "0, 0, 0, 0",
+                "snapOnInput": true,
+                "startingDirectory": "C:\\projects\\",
+                "tabTitle": "Git Bash",
+                "useAcrylic": true
+            },
+            {
                 "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
-                "hidden": false,
+                "hidden": true,
                 "name": "Azure Cloud Shell",
                 "source": "Windows.Terminal.Azure"
             }
