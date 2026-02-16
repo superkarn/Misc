@@ -1,6 +1,6 @@
 # https://superuser.com/a/803885
 function Get-PublicIp {
-	(Invoke-WebRequest "https://ifconfig.me/ip").Content.Trim()
+	(Invoke-WebRequest -UseBasicParsing "https://ifconfig.me/ip").Content.Trim()
 }
 
 # https://developers.cloudflare.com/api/operations/dns-records-for-a-zone-list-dns-records
